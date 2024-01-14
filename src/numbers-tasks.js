@@ -453,8 +453,9 @@ function isInteger(number) {
  * '4.567abcdefgh' => 4.567
  * 'abcdefgh'      => NaN
  */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+function getFloatOnString(str) {
+  const parsedFloat = Number.parseFloat(str);
+  return Number.isNaN(parsedFloat) ? NaN : parsedFloat;
 }
 
 /**
@@ -471,8 +472,9 @@ function getFloatOnString(/* str */) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  const parsedInt = Number.parseInt(str, base);
+  return Number.isNaN(parsedInt) ? NaN : parsedInt;
 }
 
 /**
@@ -624,8 +626,14 @@ function getHypotenuse(/* a, b */) {
  * 10 => 5
  * 15 => 8
  */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+function getCountOfOddNumbers(number) {
+  let counter = 0;
+  for (let i = 1; i <= Math.abs(number); i += 1) {
+    if (i % 2 !== 0) {
+      counter += 1;
+    }
+  }
+  return counter;
 }
 
 module.exports = {
